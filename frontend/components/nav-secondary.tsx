@@ -1,5 +1,5 @@
-import React from "react"
-import { type LucideIcon } from "lucide-react"
+import React from "react";
+import { type LucideIcon } from "lucide-react";
 
 import {
   SidebarGroup,
@@ -8,18 +8,19 @@ import {
   SidebarMenuBadge,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
+import Settings from "./settings/settings";
 
 export function NavSecondary({
   items,
   ...props
 }: {
   items: {
-    title: string
-    url: string
-    icon: LucideIcon
-    badge?: React.ReactNode
-  }[]
+    title: string;
+    url: string;
+    icon: LucideIcon;
+    badge?: React.ReactNode;
+  }[];
 } & React.ComponentPropsWithoutRef<typeof SidebarGroup>) {
   return (
     <SidebarGroup {...props}>
@@ -27,17 +28,22 @@ export function NavSecondary({
         <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton asChild>
-                <a href={item.url}>
-                  <item.icon />
-                  <span>{item.title}</span>
-                </a>
-              </SidebarMenuButton>
+              {/* TODO: LOOP OVER OBJECTS AND THEN RENDER THE STATE */}
+              {item.title === "Settings" ? (
+                <Settings item={item} />
+              ) : (
+                <SidebarMenuButton asChild>
+                  <a href={item.url}>
+                    <item.icon />
+                    <span>{item.title}</span>
+                  </a>
+                </SidebarMenuButton>
+              )}
               {item.badge && <SidebarMenuBadge>{item.badge}</SidebarMenuBadge>}
             </SidebarMenuItem>
           ))}
         </SidebarMenu>
       </SidebarGroupContent>
     </SidebarGroup>
-  )
+  );
 }
