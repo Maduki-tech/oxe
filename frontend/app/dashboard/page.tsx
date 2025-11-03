@@ -12,13 +12,14 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import IdeaGraph from "../_components/ideagraph/Ideagraph";
 
 export default function Dashboard() {
   return (
     <SidebarProvider>
       <SidebarLeft />
       <SidebarInset>
-        <header className="bg-background sticky top-0 flex h-14 shrink-0 items-center gap-2">
+        <header className="bg-background rounded-xl sticky top-0 flex h-14 shrink-0 items-center gap-2">
           <div className="flex flex-1 items-center gap-2 px-3">
             <SidebarTrigger />
             <Separator
@@ -29,6 +30,7 @@ export default function Dashboard() {
               <BreadcrumbList>
                 <BreadcrumbItem>
                   <BreadcrumbPage className="line-clamp-1">
+                    {/* TODO: get current page name */}
                     Project Management & Task Tracking
                   </BreadcrumbPage>
                 </BreadcrumbItem>
@@ -37,8 +39,9 @@ export default function Dashboard() {
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="bg-muted/50 mx-auto h-24 w-full max-w-3xl rounded-xl" />
-          <div className="bg-muted/50 mx-auto h-[100vh] w-full max-w-3xl rounded-xl" />
+          {/* <div className="bg-muted/50 mx-auto h-24 w-full max-w-3xl rounded-xl" /> */}
+          {/* <div className="bg-muted/50 mx-auto h-[100vh] w-full max-w-3xl rounded-xl" /> */}
+          <IdeaGraph />
         </div>
       </SidebarInset>
       <SidebarRight />
